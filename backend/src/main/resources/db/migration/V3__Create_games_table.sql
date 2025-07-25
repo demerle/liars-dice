@@ -1,0 +1,9 @@
+CREATE TABLE games (
+   id BIGSERIAL PRIMARY KEY,
+   room_id BIGINT REFERENCES rooms(id),
+   status VARCHAR(20) DEFAULT 'WAITING',
+   current_player_id BIGINT REFERENCES users(id),
+   round_number INTEGER DEFAULT 1,
+   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

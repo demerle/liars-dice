@@ -1,0 +1,170 @@
+.room-list-container {
+    padding: 2rem 0;
+}
+
+.room-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.room-list-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 2rem;
+}
+
+.room-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-form {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.search-input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.rooms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.no-rooms {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.no-rooms p {
+    margin: 0.5rem 0;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Room Card Styles */
+.room-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.room-card.inactive {
+    opacity: 0.6;
+}
+
+.room-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.room-name {
+    margin: 0;
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status-badge.available {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-badge.full {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.status-badge.inactive {
+    background: #e2e3e5;
+    color: #6c757d;
+}
+
+.room-info {
+    margin-bottom: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+.info-label {
+    font-weight: 500;
+    color: #666;
+}
+
+.info-value {
+    color: #333;
+}
+
+.password-icon {
+    color: #667eea;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.room-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .room-list-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .room-list-header h2 {
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .room-actions {
+        justify-content: center;
+    }
+
+    .search-form {
+        flex: 1;
+        max-width: 300px;
+    }
+
+    .search-input {
+        flex: 1;
+    }
+
+    .rooms-grid {
+        grid-template-columns: 1fr;
+    }
+}

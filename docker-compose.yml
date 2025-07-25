@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: liarsdice-postgres
+    environment:
+      POSTGRES_DB: liarsdice
+      POSTGRES_USER: liarsdice_user
+      POSTGRES_PASSWORD: liarsdice_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - liarsdice-network
+
+  backend:
+    build: ./backend
+    container_name: liarsdice-backend
+    depends_on:
+      - postgres
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+    networks:
+      - liarsdice-network
+    volumes:
+      - ./backend:/app
+    command: ["java", "-jar", "-Dspring.profiles.active=docker", "target/liarsdice-0.0.1-SNAPSHOT.jar"]
+
+  frontend:
+    build: ./frontend
+    container_name: liarsdice-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - liarsdice-network
+
+volumes:
+  postgres_data:
+
+networks:
+  liarsdice-network:
+    driver: bridge
